@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
@@ -38,12 +37,8 @@ export function Footer() {
         </div>
 
         <div className="pt-4 border-t border-base-850 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-base-400">
-          <div className="flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-base-300" />
-            <span>Non-custodial: Private keys remain exclusively in local developer keychain.</span>
-          </div>
           <div>
-            Built for Celo Build with buy • Developer: Mahdun
+            Built for Celo Build with buy
           </div>
         </div>
       </div>
