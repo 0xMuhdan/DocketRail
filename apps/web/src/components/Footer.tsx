@@ -10,9 +10,6 @@ export function Footer() {
           <div className="space-y-1">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-white text-sm">DocketRail</span>
-              <span className="font-mono text-[10px] text-base-400 border border-base-800 px-1 py-0.2 rounded bg-base-900">
-                v0.1.0 • Nov 2026
-              </span>
             </div>
             <p className="text-base-400 text-xs max-w-xl">
               An evidence collection workspace for developers preparing MiniPay submission dossiers. Bounded scanning, deterministic origin extraction, and missing item tracking.
