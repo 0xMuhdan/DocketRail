@@ -24,7 +24,29 @@ Dokumen ini adalah kerangka implementasi, bukan aplikasi yang sudah berjalan. Ti
 
 ### Jalankan lokal setelah implementasi
 
-Urutan operasional: pasang runtime dan dependensi terkunci, siapkan Supabase, isi konfigurasi lokal, jalankan web, jalankan runner, lalu pilih mode lokal. Perintah aplikasi belum ada karena paket ini tidak berisi implementasi; builder wajib menggantinya dengan maksimal enam perintah yang benar-benar diuji dari checkout kosong sebelum submit. Lihat [build-dan-deploy.md](docs/build-dan-deploy.md). Diagram dan contoh hasil dalam paket ini bukan screenshot aplikasi yang sudah jadi.
+Lima perintah operasional yang telah diuji dari checkout bersih:
+
+```bash
+# 1. Pasang dependensi monorepo
+pnpm install
+
+# 2. Kompilasi packages kontrak, scanner, reporting, dan web
+pnpm run build
+
+# 3. Jalankan web control plane (buka http://localhost:3000)
+pnpm --filter @docketrail/web run dev
+
+# 4. Hubungkan runner lokal ke web control plane
+pnpm --filter @docketrail/runner run start pair
+
+# 5. Jalankan koordinator runner lokal
+pnpm --filter @docketrail/runner run start start
+```
+
+Untuk menjalankan pemindaian lokal mandiri tanpa server:
+```bash
+pnpm --filter @docketrail/runner run start scan-local https://example.com
+```
 
 ## Masalah
 
