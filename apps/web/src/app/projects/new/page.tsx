@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ShieldAlert, CheckCircle2, AlertCircle } from "lucide-react";
+import { ArrowLeft, AlertCircle } from "lucide-react";
 import { CreateProjectInputSchema } from "@docketrail/contracts";
 
 export default function NewProjectPage() {
@@ -59,35 +59,35 @@ export default function NewProjectPage() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10 space-y-8">
+    <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-xs font-medium text-forest-400 hover:text-white transition-colors"
+        className="inline-flex items-center gap-1.5 text-xs text-base-400 hover:text-white transition-colors"
       >
-        <ArrowLeft className="w-4 h-4" />
+        <ArrowLeft className="w-3.5 h-3.5" />
         <span>Back to Projects</span>
       </Link>
 
       <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          Register Target Project
+        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          Register Inspection Target
         </h1>
-        <p className="text-sm text-forest-300 mt-1">
-          Specify the public HTTPS deployment of your MiniPay app to begin evidence inspection.
+        <p className="text-xs text-base-400 mt-1">
+          Specify your public HTTPS application to generate a bounded inspection plan.
         </p>
       </div>
 
       {error && (
-        <div className="p-4 rounded-xl bg-rose-950/80 border border-rose-800 text-rose-200 text-xs flex items-start gap-3">
+        <div className="p-3.5 rounded-md bg-rose-950 border border-rose-800 text-rose-200 text-xs flex items-start gap-2.5">
           <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-6 bg-forest-900/60 border border-forest-800 rounded-xl p-6 sm:p-8">
+      <form onSubmit={handleSubmit} className="space-y-5 border border-base-800 rounded-lg p-5 sm:p-6 bg-base-900/60">
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold uppercase tracking-wider text-forest-200 block">
-            Project Display Name *
+          <label className="text-xs font-medium text-base-200 block">
+            Project Name <span className="text-rose-400">*</span>
           </label>
           <input
             type="text"
@@ -95,13 +95,13 @@ export default function NewProjectPage() {
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
             placeholder="e.g. CeloSwap Mini App"
-            className="w-full px-3.5 py-2.5 rounded-lg bg-forest-950 border border-forest-700/80 text-white placeholder-forest-500 text-sm focus:outline-none focus:border-lime-400"
+            className="w-full px-3 py-2 rounded-md bg-base-950 border border-base-750 text-white placeholder-base-600 text-xs focus:outline-none focus:border-brand-light"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold uppercase tracking-wider text-forest-200 block">
-            Application URL (HTTPS) *
+          <label className="text-xs font-medium text-base-200 block">
+            Application URL (HTTPS) <span className="text-rose-400">*</span>
           </label>
           <input
             type="url"
@@ -109,16 +109,16 @@ export default function NewProjectPage() {
             value={applicationUrl}
             onChange={(e) => setApplicationUrl(e.target.value)}
             placeholder="https://app.example.com"
-            className="w-full px-3.5 py-2.5 rounded-lg bg-forest-950 border border-forest-700/80 text-white placeholder-forest-500 text-sm focus:outline-none focus:border-lime-400"
+            className="w-full px-3 py-2 rounded-md bg-base-950 border border-base-750 text-white placeholder-base-600 text-xs font-mono focus:outline-none focus:border-brand-light"
           />
-          <span className="text-[11px] text-forest-400 block">
-            Must be a public HTTPS endpoint. Localhost, private IPs, or credentials in URL are prohibited.
+          <span className="text-[11px] text-base-400 block font-sans">
+            Must be a public HTTPS endpoint. Localhost, private IPs, or credentials in URL are rejected by the SSRF firewall.
           </span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold uppercase tracking-wider text-forest-200 block">
+            <label className="text-xs font-medium text-base-200 block">
               GitHub Repository (Optional)
             </label>
             <input
@@ -126,70 +126,70 @@ export default function NewProjectPage() {
               value={repoUrl}
               onChange={(e) => setRepoUrl(e.target.value)}
               placeholder="https://github.com/owner/repo"
-              className="w-full px-3.5 py-2.5 rounded-lg bg-forest-950 border border-forest-700/80 text-white placeholder-forest-500 text-sm focus:outline-none focus:border-lime-400"
+              className="w-full px-3 py-2 rounded-md bg-base-950 border border-base-750 text-white placeholder-base-600 text-xs font-mono focus:outline-none focus:border-brand-light"
             />
-            <span className="text-[11px] text-forest-400 block">
-              Used for read-only metadata hint inspection (no private repo tokens).
+            <span className="text-[11px] text-base-400 block font-sans">
+              Read-only inspection for package.json and legal URLs.
             </span>
           </div>
 
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold uppercase tracking-wider text-forest-200 block">
+            <label className="text-xs font-medium text-base-200 block">
               Monorepo Subdirectory
             </label>
             <input
               type="text"
               value={repoSubdir}
               onChange={(e) => setRepoSubdir(e.target.value)}
-              placeholder="e.g. apps/minipay"
-              className="w-full px-3.5 py-2.5 rounded-lg bg-forest-950 border border-forest-700/80 text-white placeholder-forest-500 text-sm focus:outline-none focus:border-lime-400"
+              placeholder="e.g. apps/web"
+              className="w-full px-3 py-2 rounded-md bg-base-950 border border-base-750 text-white placeholder-base-600 text-xs font-mono focus:outline-none focus:border-brand-light"
             />
           </div>
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold uppercase tracking-wider text-forest-200 block">
-            Submission Stage *
+          <label className="text-xs font-medium text-base-200 block">
+            Submission Stage <span className="text-rose-400">*</span>
           </label>
           <div className="grid grid-cols-2 gap-3">
             <button
               type="button"
               onClick={() => setSubmissionStage("intake")}
-              className={`p-3 rounded-lg border text-left text-xs transition-colors ${
+              className={`p-3 rounded-md border text-left text-xs transition-colors ${
                 submissionStage === "intake"
-                  ? "bg-lime-500/10 border-lime-400 text-white"
-                  : "bg-forest-950 border-forest-800 text-forest-300 hover:border-forest-700"
+                  ? "bg-brand-surface border-brand text-white"
+                  : "bg-base-950 border-base-800 text-base-400 hover:border-base-700"
               }`}
             >
-              <span className="font-bold block mb-0.5">Intake</span>
-              <span className="text-[11px] text-forest-400">Initial basic review & checklist</span>
+              <span className="font-semibold block mb-0.5 text-base-200">Intake Stage</span>
+              <span className="text-[11px] text-base-400">Initial basic review & listing checklist</span>
             </button>
 
             <button
               type="button"
               onClick={() => setSubmissionStage("readiness")}
-              className={`p-3 rounded-lg border text-left text-xs transition-colors ${
+              className={`p-3 rounded-md border text-left text-xs transition-colors ${
                 submissionStage === "readiness"
-                  ? "bg-lime-500/10 border-lime-400 text-white"
-                  : "bg-forest-950 border-forest-800 text-forest-300 hover:border-forest-700"
+                  ? "bg-brand-surface border-brand text-white"
+                  : "bg-base-950 border-base-800 text-base-400 hover:border-base-700"
               }`}
             >
-              <span className="font-bold block mb-0.5">Readiness</span>
-              <span className="text-[11px] text-forest-400">Full pre-submission compliance audit</span>
+              <span className="font-semibold block mb-0.5 text-base-200">Readiness Audit</span>
+              <span className="text-[11px] text-base-400">Full pre-submission compliance dossier</span>
             </button>
           </div>
         </div>
 
         <div className="pt-2">
-          <label className="flex items-start gap-3 p-3.5 rounded-lg bg-forest-950 border border-forest-800 cursor-pointer">
+          <label className="flex items-start gap-2.5 p-3 rounded-md bg-base-950 border border-base-800 cursor-pointer">
             <input
               type="checkbox"
               required
               checked={authorizationConsent}
               onChange={(e) => setAuthorizationConsent(e.target.checked)}
-              className="mt-0.5 accent-lime-500 rounded"
+              className="mt-0.5 accent-brand rounded"
             />
-            <span className="text-xs text-forest-200 leading-relaxed">
+            <span className="text-xs text-base-300 leading-relaxed">
               I certify that I am the owner or authorized developer of this application and grant DocketRail permission to inspect endpoints, origins, and assets.
             </span>
           </label>
@@ -199,9 +199,9 @@ export default function NewProjectPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="w-full py-3 rounded-lg font-semibold text-sm bg-lime-500 hover:bg-lime-400 text-forest-950 transition-all disabled:opacity-50"
+            className="w-full py-2.5 rounded-md font-medium text-xs bg-brand hover:bg-brand-hover text-white transition-colors disabled:opacity-50"
           >
-            {submitting ? "Registering..." : "Create Project & Generate Plan"}
+            {submitting ? "Registering Target..." : "Create Project & Generate Plan"}
           </button>
         </div>
       </form>

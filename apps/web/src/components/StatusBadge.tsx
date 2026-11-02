@@ -1,6 +1,6 @@
 import React from "react";
 import type { RequirementStatus } from "@docketrail/contracts";
-import { CheckCircle2, AlertTriangle, HelpCircle, MinusCircle } from "lucide-react";
+import { Check, AlertCircle, HelpCircle, Minus } from "lucide-react";
 
 interface StatusBadgeProps {
   status: RequirementStatus;
@@ -12,27 +12,27 @@ export function StatusBadge({ status, className = "" }: StatusBadgeProps) {
     case "evidence_available":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 ${className}`}
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-emerald-950 text-emerald-300 border border-emerald-800 ${className}`}
         >
-          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+          <Check className="w-3 h-3 text-emerald-400 stroke-[2.5]" />
           Evidence Available
         </span>
       );
     case "needs_fix":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-rose-950/80 text-rose-300 border border-rose-700/60 ${className}`}
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-rose-950 text-rose-300 border border-rose-800 ${className}`}
         >
-          <AlertTriangle className="w-3.5 h-3.5 text-rose-400" />
+          <AlertCircle className="w-3 h-3 text-rose-400 stroke-[2.5]" />
           Needs Fix
         </span>
       );
     case "needs_owner_confirmation":
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-950/80 text-amber-300 border border-amber-700/60 ${className}`}
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-amber-950 text-amber-300 border border-amber-800 ${className}`}
         >
-          <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
+          <HelpCircle className="w-3 h-3 text-amber-400 stroke-[2.5]" />
           Needs Confirmation
         </span>
       );
@@ -40,9 +40,9 @@ export function StatusBadge({ status, className = "" }: StatusBadgeProps) {
     default:
       return (
         <span
-          className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-slate-900/80 text-slate-300 border border-slate-700/60 ${className}`}
+          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-medium bg-base-900 text-base-300 border border-base-700 ${className}`}
         >
-          <MinusCircle className="w-3.5 h-3.5 text-slate-400" />
+          <Minus className="w-3 h-3 text-base-400 stroke-[2.5]" />
           Not Checked
         </span>
       );

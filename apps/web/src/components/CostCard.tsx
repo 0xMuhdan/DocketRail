@@ -1,5 +1,5 @@
 import React from "react";
-import { DollarSign, ShieldAlert } from "lucide-react";
+import { DollarSign, Shield } from "lucide-react";
 
 interface CostCardProps {
   settledMicroUsd: number;
@@ -23,49 +23,42 @@ export function CostCard({
   );
 
   return (
-    <div className="bg-forest-900/90 border border-forest-700/60 rounded-xl p-4 shadow-sm backdrop-blur-sm">
-      <div className="flex items-center justify-between mb-3">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-lime-500/10 border border-lime-500/30 flex items-center justify-center text-lime-400">
-            <DollarSign className="w-4 h-4" />
-          </div>
-          <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-forest-200">
-              Budget Ledger (US$1 Hard Ceiling)
-            </h4>
-            <p className="text-xs text-forest-300/80">x402 Atomic Spend Meter</p>
-          </div>
+    <div className="bg-base-900 border border-base-800 rounded-lg p-3.5 space-y-2.5">
+      <div className="flex items-center justify-between text-xs">
+        <div className="flex items-center gap-1.5 text-base-200 font-semibold">
+          <DollarSign className="w-3.5 h-3.5 text-brand-light" />
+          <span>x402 Budget Ledger</span>
         </div>
-        <span className="text-xs font-medium px-2 py-0.5 rounded bg-forest-950 text-forest-200 border border-forest-800">
-          Max: $1.00
+        <span className="font-mono text-[11px] text-base-400">
+          Cap: $1.00 USD
         </span>
       </div>
 
-      <div className="w-full bg-forest-950 rounded-full h-2.5 mb-3 overflow-hidden border border-forest-800">
+      <div className="w-full bg-base-950 rounded h-1.5 overflow-hidden border border-base-800">
         <div
-          className="bg-lime-500 h-2.5 rounded-full transition-all duration-500"
+          className="bg-brand-light h-1.5 transition-all duration-300"
           style={{ width: `${percentUsed}%` }}
         />
       </div>
 
-      <div className="grid grid-cols-3 gap-2 text-center text-xs">
-        <div className="bg-forest-950/70 p-2 rounded border border-forest-800/80">
-          <span className="text-forest-400 block mb-0.5">Settled</span>
-          <span className="font-semibold text-white">${settledUsd}</span>
+      <div className="grid grid-cols-3 gap-1.5 text-center text-xs font-mono">
+        <div className="bg-base-950 p-1.5 rounded border border-base-800">
+          <span className="text-[10px] text-base-400 block font-sans">Settled</span>
+          <span className="text-white font-medium">${settledUsd}</span>
         </div>
-        <div className="bg-forest-950/70 p-2 rounded border border-forest-800/80">
-          <span className="text-amber-400 block mb-0.5">Reserved</span>
-          <span className="font-semibold text-amber-200">${reservedUsd}</span>
+        <div className="bg-base-950 p-1.5 rounded border border-base-800">
+          <span className="text-[10px] text-amber-400/90 block font-sans">Reserved</span>
+          <span className="text-amber-200 font-medium">${reservedUsd}</span>
         </div>
-        <div className="bg-forest-950/70 p-2 rounded border border-forest-800/80">
-          <span className="text-emerald-400 block mb-0.5">Remaining</span>
-          <span className="font-semibold text-emerald-200">${remainingUsd}</span>
+        <div className="bg-base-950 p-1.5 rounded border border-base-800">
+          <span className="text-[10px] text-emerald-400/90 block font-sans">Remaining</span>
+          <span className="text-emerald-200 font-medium">${remainingUsd}</span>
         </div>
       </div>
 
-      <div className="mt-3 pt-2 border-t border-forest-800/60 flex items-center gap-1.5 text-[11px] text-forest-300/80">
-        <ShieldAlert className="w-3.5 h-3.5 text-lime-400 shrink-0" />
-        <span>Strict fail-closed: No automated retry on uncertain settlement.</span>
+      <div className="flex items-center gap-1 text-[11px] text-base-400 pt-0.5 border-t border-base-800/80">
+        <Shield className="w-3 h-3 text-base-400 shrink-0" />
+        <span>Atomic locks: Fail-closed on ambiguous settlement</span>
       </div>
     </div>
   );

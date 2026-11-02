@@ -4,62 +4,49 @@ import { ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="bg-forest-950 border-t border-forest-900 mt-20 text-forest-300 text-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <span className="font-bold text-base text-white">DocketRail</span>
-              <span className="text-[10px] uppercase font-semibold px-1.5 py-0.5 rounded bg-forest-900 text-lime-400 border border-forest-700">
-                Baseline Nov 2026
+    <footer className="border-t border-base-800 bg-base-950 mt-16 text-base-400 text-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-white text-sm">DocketRail</span>
+              <span className="font-mono text-[10px] text-base-400 border border-base-800 px-1 py-0.2 rounded bg-base-900">
+                v0.1.0 • Nov 2026
               </span>
             </div>
-            <p className="text-forest-400 max-w-sm mb-3">
-              Your app. Your evidence. Ready for review. Assembling verifiable submission dossiers for MiniPay applications with traceable evidence and missing item tracking.
+            <p className="text-base-400 text-xs max-w-xl">
+              An evidence collection workspace for developers preparing MiniPay submission dossiers. Bounded scanning, deterministic origin extraction, and missing item tracking.
             </p>
-            <div className="flex items-center gap-1.5 text-forest-400">
-              <ShieldCheck className="w-4 h-4 text-lime-400" />
-              <span>Non-custodial architecture — no private keys on server.</span>
-            </div>
           </div>
 
-          <div>
-            <h5 className="font-semibold text-white mb-2 uppercase text-[11px] tracking-wider">
-              Governance & Budget Limits
-            </h5>
-            <ul className="space-y-1.5 text-forest-400">
-              <li>• Hard spend ceiling: US$1.00 total across experiment</li>
-              <li>• Max single run compute budget: US$0.12</li>
-              <li>• Safe scanner: viewport 360×640 bounded navigation</li>
-              <li>• Deterministic exports: Markdown, CSV, and JSON</li>
-            </ul>
-          </div>
-
-          <div>
-            <h5 className="font-semibold text-white mb-2 uppercase text-[11px] tracking-wider">
-              Legal & Hackathon Track
-            </h5>
-            <p className="text-forest-400 mb-2">
-              Track: <em>Build with buy, Agents on Open Rails</em>.
-            </p>
-            <p className="text-forest-500 text-[11px]">
-              Disclaimer: &ldquo;Ready for review&rdquo; denotes human review readiness. DocketRail does not provide automated listing approvals, endorsements, or legal certificates.
-            </p>
+          <div className="flex items-center gap-6 text-xs">
+            <Link href="/#sample-pack" className="hover:text-white transition-colors">
+              Sample Pack
+            </Link>
+            <Link href="/projects" className="hover:text-white transition-colors">
+              Workspace
+            </Link>
+            <Link href="/runner/pair" className="hover:text-white transition-colors">
+              Pair Runner
+            </Link>
+            <a
+              href="https://github.com/0xMuhdan/DocketRail"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors font-mono"
+            >
+              GitHub
+            </a>
           </div>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-forest-900/80 flex flex-col sm:flex-row items-center justify-between text-forest-500 text-[11px]">
-          <span>© 2026 DocketRail • Builder: Mahdun</span>
-          <div className="flex items-center gap-4 mt-2 sm:mt-0">
-            <Link href="/#sample-pack" className="hover:text-forest-300">
-              Sample Pack
-            </Link>
-            <Link href="/projects" className="hover:text-forest-300">
-              Workspace
-            </Link>
-            <Link href="/runner/pair" className="hover:text-forest-300">
-              Runner Pairing
-            </Link>
+        <div className="pt-4 border-t border-base-850 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-[11px] text-base-400">
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-base-300" />
+            <span>Non-custodial: Private keys remain exclusively in local developer keychain.</span>
+          </div>
+          <div>
+            Built for Celo Build with buy • Developer: Mahdun
           </div>
         </div>
       </div>
