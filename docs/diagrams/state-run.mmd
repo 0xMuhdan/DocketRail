@@ -1,0 +1,14 @@
+flowchart TD
+  A[draft] --> B[awaiting_plan_approval]
+  B --> C[queued]
+  C --> D[running]
+  D --> E[needs_owner_review]
+  E --> F[exported]
+  D --> G[partial]
+  D --> H[failed atau stopped]
+  D --> I[payment_uncertain]
+  I --> J[Rekonsiliasi]
+  J --> D
+  J --> G
+  G --> E
+  H --> E

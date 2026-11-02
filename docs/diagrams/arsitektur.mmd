@@ -1,0 +1,9 @@
+flowchart TD
+  W[Web Next.js di Vercel] --> S[Supabase privat]
+  R[Runner dan keychain lokal] --> W
+  R --> B[buy CLI dan gateway]
+  B --> V[VM scanner Playwright]
+  B --> X[Cencori dan Chainstack]
+  V --> S
+  R --> G[GitHub dan app publik]
+  W --> E[Ekspor tersanitasi]

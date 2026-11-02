@@ -1,0 +1,12 @@
+flowchart TD
+  U[profiles] --> P[projects]
+  P --> Q[project_revisions]
+  Q --> R[runs dan plans]
+  R --> E[evidence dan results]
+  R --> A[purchase_attempts]
+  A --> L[budget_ledger]
+  E --> X[exports]
+  Q --> X
+  X --> S[share_snapshots]
+  U --> D[runner_devices]
+  D --> R

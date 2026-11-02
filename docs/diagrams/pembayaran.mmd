@@ -1,0 +1,15 @@
+flowchart TD
+  A[quoted] --> B[reserved]
+  B --> C[approved]
+  C --> D[dispatching]
+  A --> Z[canceled sebelum dispatch]
+  B --> Z
+  C --> Z
+  D --> E[settled]
+  D --> F[uncertain]
+  D --> G[confirmed_not_paid]
+  F --> H[Rekonsiliasi receipt]
+  H --> E
+  H --> G
+  E --> I[Hasil service berhasil atau gagal]
+  G --> J[Reserve dilepas]

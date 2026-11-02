@@ -1,0 +1,19 @@
+sequenceDiagram
+  participant W as Pemilik dan web
+  participant R as Runner lokal
+  participant B as buy provider
+  participant V as VM scanner
+  participant S as Storage privat
+  W->>R: Plan disetujui dan claim
+  R->>B: Quote permintaan tepat
+  B-->>R: Token dan maksimum
+  R->>W: Reserve budget dan status
+  Note over R: Pemilik menyetujui di terminal
+  R->>B: Dispatch satu pembelian
+  B-->>R: Receipt dan poll capability
+  B->>V: Provision dan bootstrap
+  V->>S: Upload artefak path terbatas
+  R->>B: Poll hasil tanpa pembelian ulang
+  B-->>R: Ringkasan hasil
+  R->>W: Fakta dan receipt tersanitasi
+  W->>S: Validasi objek dan bentuk export

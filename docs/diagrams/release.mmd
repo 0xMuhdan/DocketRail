@@ -1,0 +1,11 @@
+flowchart TD
+  A[Pipeline lokal lulus] --> B[Aturan dan anggaran diperiksa]
+  B --> C{Gate live lulus?}
+  C -->|Ya| D[Satu uji VM berizin]
+  C -->|Tidak| E[Mainnet nonaktif]
+  D --> F{Receipt dan artefak cocok?}
+  F -->|Ya| G[Pilot dan acceptance]
+  F -->|Tidak| H[Rekonsiliasi dan perbaikan lokal]
+  H --> E
+  G --> I[Freeze dan deploy]
+  I --> J[Demo tersimpan dan submit]
