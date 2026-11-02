@@ -1,0 +1,26 @@
+{
+  "name": "@docketrail/runner",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "docketrail-runner": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc --noEmit",
+    "start": "node ./dist/cli.js",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@docketrail/contracts": "workspace:*",
+    "@docketrail/scanner": "workspace:*",
+    "commander": "^13.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "typescript": "^5.7.3"
+  }
+}
