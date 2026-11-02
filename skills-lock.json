@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "skills": {
+    "celopedia-skill": {
+      "source": "celo-org/celopedia-skills",
+      "sourceType": "github",
+      "skillPath": "skills/celopedia-skill/SKILL.md",
+      "computedHash": "a25537ef99cec18bbb540f157233622ed33468ee4b581d83982ece40f7cad960"
+    },
+    "docs-watch": {
+      "source": "celo-org/celopedia-skills",
+      "sourceType": "github",
+      "skillPath": ".claude/skills/docs-watch/SKILL.md",
+      "computedHash": "440e95c42e9819bb740de1e8ba3de214a7718e1980ad16f0ae652756848b7981"
+    },
+    "order-compute": {
+      "source": "celo-org/buy-skill",
+      "sourceType": "github",
+      "skillPath": "skills/order-compute/SKILL.md",
+      "computedHash": "5039ddbf017258015f0a4590af479c8dd4636ee24f20bb824e3ce0ddf5a00906"
+    },
+    "supabase": {
+      "source": "supabase/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/supabase/SKILL.md",
+      "computedHash": "af1844ade632808fc0c15cf2db87daf3b2431c5262dc8a0c3ea7d70880fadf91"
+    },
+    "use-api-gateway": {
+      "source": "celo-org/buy-skill",
+      "sourceType": "github",
+      "skillPath": "skills/use-api-gateway/SKILL.md",
+      "computedHash": "12cb26ff50d523a89acea521ab9b770e1ecc3bd228afc6ac7c61890ed93b750a"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "computedHash": "ca7b0c0c6e5f2750043f7f0cd72d16ac4e2abc48f9b5500d047a4b77a2506212"
+    },
+    "web-design-guidelines": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/web-design-guidelines/SKILL.md",
+      "computedHash": "f3bc47f890f42a44db1007ab390709ec368e4b8c089baee6b0007182236ac474"
+    }
+  }
+}
