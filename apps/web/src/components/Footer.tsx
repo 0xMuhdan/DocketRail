@@ -1,15 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
     <footer className="border-t border-base-800 bg-base-950 mt-16 text-base-400 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-white text-sm">DocketRail</span>
-            </div>
+          <div className="space-y-1.5">
+            <Link href="/" className="inline-block hover:opacity-90 transition-opacity">
+              <Logo type="full" height={20} />
+            </Link>
             <p className="text-base-400 text-xs max-w-xl">
               An evidence collection workspace for developers preparing MiniPay submission dossiers. Bounded scanning, deterministic origin extraction, and missing item tracking.
             </p>

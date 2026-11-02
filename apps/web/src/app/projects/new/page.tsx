@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, AlertCircle } from "lucide-react";
 import { CreateProjectInputSchema } from "@docketrail/contracts";
+import { Logo } from "@/components/Logo";
 
 export default function NewProjectPage() {
   const router = useRouter();
@@ -68,13 +69,16 @@ export default function NewProjectPage() {
         <span>Back to Projects</span>
       </Link>
 
-      <div>
-        <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
-          Register Inspection Target
-        </h1>
-        <p className="text-xs text-base-400 mt-1">
-          Specify your public HTTPS application to generate a bounded inspection plan.
-        </p>
+      <div className="space-y-3">
+        <Logo type="icon" height={36} />
+        <div>
+          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            Register Inspection Target
+          </h1>
+          <p className="text-xs text-base-400 mt-0.5">
+            Specify your public HTTPS application to generate a bounded inspection plan.
+          </p>
+        </div>
       </div>
 
       {error && (

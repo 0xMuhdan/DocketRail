@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Terminal, Shield, Check, AlertCircle, ArrowLeft } from "lucide-react";
 import { PairingApproveInputSchema } from "@docketrail/contracts";
+import { Logo } from "@/components/Logo";
 
 export default function RunnerPairPage() {
   const [userCode, setUserCode] = useState("");
@@ -56,16 +57,16 @@ export default function RunnerPairPage() {
         <span>Back to Projects</span>
       </Link>
 
-      <div className="space-y-1">
-        <div className="flex items-center gap-2">
-          <Terminal className="w-5 h-5 text-base-300" />
+      <div className="space-y-3">
+        <Logo type="icon" height={36} />
+        <div>
           <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
             Pair Runner Device
           </h1>
+          <p className="text-xs text-base-400 mt-0.5">
+            Enter the 8-character verification code displayed in your terminal after running <code className="text-base-200">docketrail-runner pair</code>.
+          </p>
         </div>
-        <p className="text-xs text-base-400">
-          Enter the 8-character verification code displayed in your terminal after running <code className="text-base-200">docketrail-runner pair</code>.
-        </p>
       </div>
 
       {success && (

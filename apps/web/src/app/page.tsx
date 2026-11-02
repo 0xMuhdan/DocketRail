@@ -24,12 +24,16 @@ import {
 } from "@/lib/sample-data";
 import { StatusBadge } from "@/components/StatusBadge";
 import { CostCard } from "@/components/CostCard";
+import { Logo } from "@/components/Logo";
 
 export default function HomePage() {
   return (
     <div className="space-y-16 py-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/* 1. HERO SECTION */}
       <section className="max-w-4xl mx-auto text-center space-y-5 pt-4">
+        <div className="flex justify-center mb-1">
+          <Logo type="icon" height={48} />
+        </div>
         <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
           Turn your MiniPay app into a verified submission pack
         </h1>

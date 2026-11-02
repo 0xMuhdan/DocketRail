@@ -4,9 +4,14 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "DocketRail — Your app. Your evidence. Ready for review.",
+  title: "DocketRail — MiniPay Review Dossier & Audit Console",
   description:
-    "Turn your MiniPay app into a submission pack with traceable evidence and a clear list of what is missing.",
+    "Turn your MiniPay app into a verified submission pack with traceable evidence and a clear list of what is missing.",
+  icons: {
+    icon: "/logo-icon-dark.png",
+    shortcut: "/logo-icon-dark.png",
+    apple: "/logo-icon-dark.png",
+  },
 };
 
 export default function RootLayout({
@@ -16,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-forest-950 text-forest-100 flex flex-col min-h-screen selection:bg-lime-500 selection:text-forest-950">
+      <body className="bg-base-950 text-base-100 flex flex-col min-h-screen selection:bg-brand selection:text-white">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
