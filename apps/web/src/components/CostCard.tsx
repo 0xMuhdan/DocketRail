@@ -1,5 +1,5 @@
 import React from "react";
-import { DollarSign, Shield } from "lucide-react";
+import { Coins, Lock, ShieldCheck } from "lucide-react";
 
 interface CostCardProps {
   settledMicroUsd: number;
@@ -23,42 +23,42 @@ export function CostCard({
   );
 
   return (
-    <div className="bg-base-900 border border-base-800 rounded-lg p-3.5 space-y-2.5">
+    <div className="bg-canvas-panel border border-border-dim rounded-lg p-3.5 space-y-2.5">
       <div className="flex items-center justify-between text-xs">
-        <div className="flex items-center gap-1.5 text-base-200 font-semibold">
-          <DollarSign className="w-3.5 h-3.5 text-brand-light" />
-          <span>x402 Budget Ledger</span>
+        <div className="flex items-center gap-1.5 text-content-primary font-semibold">
+          <Coins className="w-3.5 h-3.5 text-lime" />
+          <span>x402 Atomic Spend Meter</span>
         </div>
-        <span className="font-mono text-[11px] text-base-400">
-          Cap: $1.00 USD
+        <span className="font-mono text-[11px] text-content-muted border border-border-dim px-1.5 py-0.2 rounded bg-canvas-deep">
+          Hard Cap: $1.00 USD
         </span>
       </div>
 
-      <div className="w-full bg-base-950 rounded h-1.5 overflow-hidden border border-base-800">
+      <div className="w-full bg-canvas-deep rounded-full h-1.5 overflow-hidden border border-border-dim">
         <div
-          className="bg-brand-light h-1.5 transition-all duration-300"
-          style={{ width: `${percentUsed}%` }}
+          className="bg-lime h-1.5 transition-all duration-300"
+          style={{ width: `${Math.max(4, percentUsed)}%` }}
         />
       </div>
 
       <div className="grid grid-cols-3 gap-1.5 text-center text-xs font-mono">
-        <div className="bg-base-950 p-1.5 rounded border border-base-800">
-          <span className="text-[10px] text-base-400 block font-sans">Settled</span>
-          <span className="text-white font-medium">${settledUsd}</span>
+        <div className="bg-canvas-deep p-1.5 rounded border border-border-dim">
+          <span className="text-[10px] text-content-muted block font-sans">Settled</span>
+          <span className="text-content-primary font-medium">${settledUsd}</span>
         </div>
-        <div className="bg-base-950 p-1.5 rounded border border-base-800">
-          <span className="text-[10px] text-amber-400/90 block font-sans">Reserved</span>
+        <div className="bg-canvas-deep p-1.5 rounded border border-border-dim">
+          <span className="text-[10px] text-amber-400 block font-sans">Reserved</span>
           <span className="text-amber-200 font-medium">${reservedUsd}</span>
         </div>
-        <div className="bg-base-950 p-1.5 rounded border border-base-800">
-          <span className="text-[10px] text-emerald-400/90 block font-sans">Remaining</span>
+        <div className="bg-canvas-deep p-1.5 rounded border border-border-dim">
+          <span className="text-[10px] text-emerald-400 block font-sans">Remaining</span>
           <span className="text-emerald-200 font-medium">${remainingUsd}</span>
         </div>
       </div>
 
-      <div className="flex items-center gap-1 text-[11px] text-base-400 pt-0.5 border-t border-base-800/80">
-        <Shield className="w-3 h-3 text-base-400 shrink-0" />
-        <span>Atomic locks: Fail-closed on ambiguous settlement</span>
+      <div className="flex items-center gap-1.5 text-[11px] text-content-muted pt-1 border-t border-border-dim">
+        <Lock className="w-3 h-3 text-content-dim shrink-0" />
+        <span>Fail-closed: Uncertain settlement locks further calls automatically</span>
       </div>
     </div>
   );

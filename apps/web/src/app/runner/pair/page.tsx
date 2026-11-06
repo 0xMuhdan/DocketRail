@@ -51,26 +51,26 @@ export default function RunnerPairPage() {
     <div className="max-w-xl mx-auto px-4 py-8 space-y-6">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-1.5 text-xs text-base-400 hover:text-white transition-colors"
+        className="inline-flex items-center gap-1.5 text-xs text-content-muted hover:text-content-primary transition-colors"
       >
         <ArrowLeft className="w-3.5 h-3.5" />
         <span>Back to Projects</span>
       </Link>
 
       <div className="space-y-3">
-        <Logo type="icon" height={36} />
+        <Logo type="icon" height={36} priority />
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold text-content-primary tracking-tight">
             Pair Runner Device
           </h1>
-          <p className="text-xs text-base-400 mt-0.5">
-            Enter the 8-character verification code displayed in your terminal after running <code className="text-base-200">docketrail-runner pair</code>.
+          <p className="text-xs text-content-muted mt-0.5">
+            Enter the 8-character verification code displayed in your terminal after running <code className="text-content-primary font-mono">docketrail-runner pair</code>.
           </p>
         </div>
       </div>
 
       {success && (
-        <div className="p-3.5 rounded-md bg-emerald-950 border border-emerald-800 text-emerald-200 text-xs flex items-start gap-2.5">
+        <div className="p-3.5 rounded-md bg-emerald-950/80 border border-emerald-800 text-emerald-200 text-xs flex items-start gap-2.5">
           <Check className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
           <div className="space-y-0.5">
             <span className="font-semibold block text-white">Runner Authorized</span>
@@ -80,15 +80,15 @@ export default function RunnerPairPage() {
       )}
 
       {error && (
-        <div className="p-3.5 rounded-md bg-rose-950 border border-rose-800 text-rose-200 text-xs flex items-start gap-2.5">
+        <div className="p-3.5 rounded-md bg-rose-950/80 border border-rose-800 text-rose-200 text-xs flex items-start gap-2.5">
           <AlertCircle className="w-4 h-4 text-rose-400 shrink-0 mt-0.5" />
           <span>{error}</span>
         </div>
       )}
 
-      <form onSubmit={handleApprove} className="border border-base-800 rounded-lg p-5 sm:p-6 bg-base-900/60 space-y-4">
+      <form onSubmit={handleApprove} className="border border-border-dim rounded-lg p-5 sm:p-6 bg-canvas-panel space-y-4">
         <div className="space-y-2">
-          <label className="text-xs font-medium text-base-200 block">
+          <label className="text-xs font-medium text-content-primary block">
             Verification Code
           </label>
           <input
@@ -98,21 +98,21 @@ export default function RunnerPairPage() {
             value={userCode}
             onChange={(e) => setUserCode(e.target.value.toUpperCase())}
             placeholder="ABCD-1234"
-            className="w-full text-center font-mono text-xl tracking-wider font-semibold px-4 py-2.5 rounded-md bg-base-950 border border-base-750 text-white placeholder-base-700 focus:outline-none focus:border-brand-light uppercase"
+            className="w-full text-center font-mono text-xl tracking-wider font-semibold px-4 py-2.5 rounded-md bg-canvas-deep border border-border-subtle text-content-primary placeholder-content-dim focus:outline-none focus:border-lime uppercase"
           />
         </div>
 
         <button
           type="submit"
           disabled={submitting || userCode.length < 8}
-          className="w-full py-2.5 rounded-md font-medium text-xs bg-brand hover:bg-brand-hover text-white transition-colors disabled:opacity-50"
+          className="w-full py-2.5 rounded-md font-semibold text-xs bg-lime text-canvas-deep hover:bg-lime-light transition-colors shadow-sm disabled:opacity-50"
         >
           {submitting ? "Verifying..." : "Authorize Runner"}
         </button>
 
-        <div className="p-3 rounded-md bg-base-950 border border-base-850 text-[11px] text-base-400 space-y-1">
-          <div className="flex items-center gap-1.5 font-medium text-base-300">
-            <Shield className="w-3 h-3 text-base-400" />
+        <div className="p-3 rounded-md bg-canvas-deep border border-border-dim text-[11px] text-content-muted space-y-1">
+          <div className="flex items-center gap-1.5 font-medium text-content-secondary">
+            <Shield className="w-3 h-3 text-lime" />
             <span>Non-Custodial Architecture</span>
           </div>
           <p className="leading-relaxed">
