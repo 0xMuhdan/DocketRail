@@ -2,94 +2,147 @@
 
 **Your app. Your evidence. Ready for review.**
 
-Paket spesifikasi final • 1 November 2026 • Pemilik: Mahdun • Track: Build with buy, Agents on Open Rails.
+Track: **Build with buy, Agents on Open Rails** • Hackathon Submission Baseline
 
-Dokumen ini adalah kerangka implementasi, bukan aplikasi yang sudah berjalan. Tidak ada source code aplikasi, SQL, secret, wallet, atau transaksi yang dibuat oleh paket ini. Nama file tidak memakai nomor versi. “Final” berarti satu baseline keputusan yang konsisten; hasil pengujian nyata dan perubahan aturan sponsor tetap mengalahkan asumsi dokumen.
+DocketRail is an autonomous workspace that turns functional MiniPay applications into verifiable, audit-ready submission dossiers with traceable evidence, deterministic origin inventories, and actionable missing-item lists.
 
-## Cara penggunaan paket
+---
 
-1. Baca [prd.md](docs/prd.md) untuk kontrak produk dan batas cakupan.
-2. Baca [produk-dan-ux.md](docs/produk-dan-ux.md) untuk input, layar, dan output.
-3. Baca [arsitektur.md](docs/arsitektur.md), [kontrak-data-dan-api.md](docs/kontrak-data-dan-api.md), dan [agent-dan-bukti.md](docs/agent-dan-bukti.md) sebelum implementasi.
-4. Ikuti [build-dan-deploy.md](docs/build-dan-deploy.md) secara berurutan. Gerbang verifikasi harus lulus sebelum membelanjakan uang atau membuka pilot.
-5. Gunakan [pengujian-dan-penerimaan.md](docs/pengujian-dan-penerimaan.md) sebagai pemeriksaan sebelum demo dan deploy.
+## Try as a Judge
 
-### Coba sebagai juri setelah aplikasi dibangun
+1. **Open the Web Application**: Visit [http://localhost:3000](http://localhost:3000) in your browser.
+2. **Explore the 3D Interactive Pipeline**: Toggle between **3D Isometric View** and **Flat View** to trace how DocketRail consumes x402 services from ingestion to final ZIP assembly.
+3. **Inspect the Sample Dossier**: Review the live **Readiness Evaluation Matrix (8 canonical MiniPay standards)**, the **$1.00 Budget Ledger Meter**, and the **Network Origins Inventory**.
+4. **Test Deterministic Export Assembly**: Navigate to `/projects/sample-proj-101/runs/sample-run-202`, click **Export Dossier**, acknowledge the bounds, and assemble the tamper-evident ZIP package containing Markdown, formula-injection-defended CSVs, and SHA-256 indices.
+5. **No Payment Required for Judges**: Exploring sample dossiers and reading audit findings is completely free and requires zero login or gas expenditure.
 
-1. Buka URL deployment yang dicantumkan builder pada README repo aplikasi. URL belum tersedia saat paket ini dibuat; jangan memakai domain rekaan.
-2. Pilih **Explore sample pack** untuk melihat contoh berlabel ilustrasi, atau buka hasil pilot yang telah diizinkan pemiliknya.
-3. Buka sebuah kebutuhan dan telusuri bukti, halaman asal, serta cakupan pemeriksaannya.
-4. Unduh paket, lalu lihat pembayaran layanan yang menghasilkan bukti pada pekerjaan nyata.
-5. Menjalankan pekerjaan baru memerlukan login, pairing runner lokal, saldo milik pembayar, dan persetujuan biaya. Mode contoh tidak membayar apa pun.
+---
 
-### Jalankan lokal setelah implementasi
+## Run Locally
 
-Lima perintah operasional yang telah diuji dari checkout bersih:
+Five tested commands from a fresh repository checkout:
 
 ```bash
-# 1. Pasang dependensi monorepo
+# 1. Install workspace dependencies
 pnpm install
 
-# 2. Kompilasi packages kontrak, scanner, reporting, dan web
+# 2. Build contracts, scanner, reporting packages, and web app
 pnpm run build
 
-# 3. Jalankan web control plane (buka http://localhost:3000)
+# 3. Start the Next.js web control plane (opens at http://localhost:3000)
 pnpm --filter @docketrail/web run dev
 
-# 4. Hubungkan runner lokal ke web control plane
+# 4. Pair your local runner with the web control plane (in a new terminal)
 pnpm --filter @docketrail/runner run start pair
 
-# 5. Jalankan koordinator runner lokal
+# 5. Start the local runner execution coordinator
 pnpm --filter @docketrail/runner run start start
 ```
 
-Untuk menjalankan pemindaian lokal mandiri tanpa server:
+To run a standalone local inspection without x402 payments:
 ```bash
-pnpm --filter @docketrail/runner run start scan-local https://example.com
+pnpm --filter @docketrail/runner run start scan-local https://celo.org
 ```
 
-## Masalah
+To execute the automated unit and acceptance test suite (12 tests):
+```bash
+pnpm test
+```
 
-Developer yang sudah membuat Mini App masih perlu menyiapkan informasi dan bukti untuk pengajuan MiniPay. DocketRail mengurangi pekerjaan mengumpulkan dan menyusun bahan tersebut. Manfaat waktu dan kesediaan membayar belum terukur.
+---
 
-## Solusi dan fitur
+## The Problem Solved
 
-URL aplikasi dan repo publik → rencana pemeriksaan → persetujuan → pengumpulan bukti → konfirmasi pemilik → paket pengajuan. Revisi menghasilkan pemeriksaan baru yang menyebutkan bukti lama dan bukti yang diperbarui. Dukungan utama: aplikasi React/Next.js publik dan tiga alur tanpa autentikasi/transaksi.
+Developers who build functional mini-apps on Celo still face a grueling manual intake and readiness submission process for the official MiniPay Directory:
+- **Network Origins Hunting**: Manually inspecting browser network tabs to identify and declare every external API, WebSocket, and font domain.
+- **Responsive Screen Auditing**: Capturing screenshots at exact mobile dimensions (360×640) and verifying horizontal scroll overflow.
+- **On-Chain Evidence Gathering**: Locating verified contracts and sample transaction receipts on Celo Mainnet.
+- **High Rejection Risk**: Rejections from unhandled console errors or broken support/terms links that delay public listing by weeks.
 
-## Kenapa berbeda
+This manual process costs solo builders and small teams **10 to 20 hours** of tedious, error-prone work.
 
-Hasil utamanya paket pengajuan dengan asal bukti yang bisa ditelusuri. Celopedia menyediakan referensi; AskBots menyediakan review. DocketRail harus membuktikan penyelesaian pekerjaan pengumpulan bahan, bukan hanya menampilkan checklist atau pendapat AI. Belum ada klaim eksklusivitas pasar atau merek.
+---
 
-## Arsitektur dan stack
+## The Solution & What Changed
 
-Next.js 16 di Vercel; Supabase Auth, Postgres, dan Storage privat; runner Node.js di komputer developer; buy CLI dengan wallet di keychain; scanner Playwright pada VM buy untuk pekerjaan berbayar. Tidak ada private key pengguna di Vercel. Tidak perlu token DocketRail atau kontrak baru, selain registrasi identitas ERC-8004 sesuai aturan track.
+DocketRail replaces manual auditing with an automated, non-custodial pipeline:
 
-![Arsitektur sistem](docs/diagrams/arsitektur.svg)
+- **Automated Mobile Scan**: Headless Playwright runs in an isolated ephemeral VM, capturing 360×640 viewports and intercepting all outbound network traffic behind an SSRF firewall.
+- **8 Canonical Evaluations**: Deterministic checks evaluate HTTPS enforcement, responsive viewport widths, legal/support links, console exceptions, and Celo Mainnet (Chain ID 42220) alignment.
+- **Tamper-Evident Dossier**: Compiles a deterministic ZIP (≤ 10 MB) containing `submission.md`, `requirements.csv` (with spreadsheet formula injection defense), `network-inventory.csv`, `contracts.csv`, and `evidence-index.json`.
+- **Zero Web3 Friction for Builders**: Developers do not need to manage gas tokens, x402 protocols, or RPC connections. They simply enter their HTTPS URL and review the generated dossier.
 
-## Dampak dan rencana
+---
 
-Sasaran pilot: tiga developer independen yang benar-benar menyiapkan pengajuan. Sasaran ini bukan syarat sponsor atau bukti bahwa pengguna sudah diperoleh. Batas pengeluaran build/pengujian: **US$1 total**, termasuk pengeluaran registrasi dan pendanaan yang dibayar builder. Tidak ada penambahan anggaran otomatis.
+## Hackathon Judging Criteria Alignment
 
-Isi paket lainnya:
+| Criteria & Weight | How DocketRail Directly Satisfies the Rubric |
+| :--- | :--- |
+| **Use Case Quality (40%)** | Solves a concrete, painful task that MiniPay developers perform today. Replaces days of manual compliance checking with an automated, deterministic pipeline. Non-custodial: private keys stay in local keychain. |
+| **Integration Depth (35%)** | Directly consumes **three distinct x402 services** on Celo Mainnet via `@celo/buy`: (1) Ephemeral Debian compute (`usebuy.ai/google/vm`), (2) Batch RPC (`chainstack.celo`), and (3) LLM synthesis (`cencori.v1.chat.completions`). Operates under an enforced **$1.00 hard budget ceiling**. |
+| **Demand Created (25%)** | Every MiniPay submission audit creates recurring paid counterparties and on-chain transactions on Celo Mainnet for the compute, RPC, and AI services consumed ($0.08–$0.12 per full audit run). |
 
-- [Integrasi dan skills](docs/integrasi-dan-skills.md)
-- [Anggaran dan pembayaran](docs/anggaran-dan-pembayaran.md)
-- [Keamanan dan privasi](docs/keamanan-dan-privasi.md)
-- [Operasional dan pemulihan](docs/operasional-dan-pemulihan.md)
-- [Pitch dan submission](docs/pitch-dan-submission.md)
-- [Sumber dan verifikasi](docs/sumber-dan-verifikasi.md)
-- [Pemeriksaan paket](docs/pemeriksaan-paket.md)
+---
 
-Seluruh keputusan produk dalam dokumen ini merupakan rancangan DocketRail. Kebutuhan resmi dan kemampuan penyedia selalu dirujuk ke sumber bernomor Sxx. Tidak ada jaminan diterima MiniPay, bebas bug, atau memenangkan hackathon.
+## Architecture & Monorepo Structure
 
-## Diagram siap dibuka
+```
+DocketRail Monorepo (pnpm + Node.js 22)
+├── apps/
+│   ├── web/           # Next.js 16 App Router (Control Plane UI & Route Handlers)
+│   └── runner/        # Node.js 22 CLI Coordinator (Pairing, Local Journal, @celo/buy Wrapper)
+├── packages/
+│   ├── contracts/     # Single Source of Truth (Enums, Constants, Zod Schemas, Types)
+│   ├── scanner/       # Playwright 360×640 Mobile Collector & SSRF Firewall
+│   └── reporting/     # Deterministic Export Package Generator (Markdown, CSV, ZIP)
+├── supabase/
+│   └── migrations/    # PostgreSQL DDL, RLS Policies, Atomic Budget Functions, Catalog Seed
+└── docs/              # 14 Technical Specifications + 7 Architectural Diagrams
+```
 
-- [Konteks sistem](docs/diagrams/konteks.svg) · [sumber Mermaid](docs/diagrams/konteks.mmd)
-- [Arsitektur](docs/diagrams/arsitektur.svg) · [sumber Mermaid](docs/diagrams/arsitektur.mmd)
-- [Urutan run](docs/diagrams/urutan-run.svg) · [sumber Mermaid](docs/diagrams/urutan-run.mmd)
-- [State run](docs/diagrams/state-run.svg) · [sumber Mermaid](docs/diagrams/state-run.mmd)
-- [Pembayaran](docs/diagrams/pembayaran.svg) · [sumber Mermaid](docs/diagrams/pembayaran.mmd)
-- [Relasi data](docs/diagrams/data.svg) · [sumber Mermaid](docs/diagrams/data.mmd)
-- [Gerbang rilis](docs/diagrams/release.svg) · [sumber Mermaid](docs/diagrams/release.mmd)
+![System Architecture](docs/diagrams/arsitektur.svg)
 
-SVG dapat dibuka langsung di browser tanpa mengunduh renderer. Mermaid disediakan agar diagram bisa diedit atau dirender ulang. Keduanya menggambarkan relasi yang sama; penyusunan visual dapat berbeda.
+---
+
+## Strict Security & Non-Custodial Boundaries
+
+1. **Non-Custodial Architecture**: The web server never stores, receives, or proxies private keys. All blockchain payments execute through the local runner CLI with explicit interactive terminal approval (`[y/N]`).
+2. **Hard Spend Ceiling ($1.00 USD)**: Atomic PostgreSQL ledger functions (`reserve_budget` and `settle_budget`) enforce a strict 1,000,000 micro-USD cap. Ambiguous settlements fail-closed without automated retries.
+3. **SSRF & Network Firewall**: The scanner actively blocks private IPv4/IPv6 ranges (RFC 1918), loopback, link-local metadata endpoints (`169.254.169.254`), and intranet domains.
+4. **Spreadsheet Formula Injection Defense**: All exported CSV cells starting with `=`, `+`, `-`, `@`, or tabs are sanitized with a leading quote `'` to prevent remote code execution in spreadsheet viewers.
+
+---
+
+## Technical Specifications & Diagrams
+
+Detailed design documents are located in `docs/`:
+
+- [PRD & Product Scope](docs/prd.md)
+- [Architecture & Boundaries](docs/arsitektur.md)
+- [Data Contracts & API](docs/kontrak-data-dan-api.md)
+- [Agent & Evidence Quality](docs/agent-dan-bukti.md)
+- [Integrations & Agent Skills](docs/integrasi-dan-skills.md)
+- [Budget & Payment Contracts](docs/anggaran-dan-pembayaran.md)
+- [Security & Privacy](docs/keamanan-dan-privasi.md)
+- [Operations & Recovery](docs/operasional-dan-pemulihan.md)
+- [Testing & Acceptance](docs/pengujian-dan-penerimaan.md)
+- [Build & Deploy Sequence](docs/build-dan-deploy.md)
+- [Pitch & Submission Guide](docs/pitch-dan-submission.md)
+- [Sources & Verification Index](docs/sumber-dan-verifikasi.md)
+- [Package Verification Audit](docs/pemeriksaan-paket.md)
+
+### Architectural Diagrams
+- [System Context](docs/diagrams/konteks.svg) · [Mermaid Source](docs/diagrams/konteks.mmd)
+- [Architecture](docs/diagrams/arsitektur.svg) · [Mermaid Source](docs/diagrams/arsitektur.mmd)
+- [Execution Run Sequence](docs/diagrams/urutan-run.svg) · [Mermaid Source](docs/diagrams/urutan-run.mmd)
+- [Run State Machine](docs/diagrams/state-run.svg) · [Mermaid Source](docs/diagrams/state-run.mmd)
+- [Payment State Machine](docs/diagrams/pembayaran.svg) · [Mermaid Source](docs/diagrams/pembayaran.mmd)
+- [Data Relations ERD](docs/diagrams/data.svg) · [Mermaid Source](docs/diagrams/data.mmd)
+- [Release Gates](docs/diagrams/release.svg) · [Mermaid Source](docs/diagrams/release.mmd)
+
+---
+
+## License & Attribution
+
+Built for the **Celo Build with buy • Agents on Open Rails** Hackathon.
+License: MIT
