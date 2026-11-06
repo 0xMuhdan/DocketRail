@@ -251,7 +251,7 @@ export default function RunWorkspacePage({
                     <td className="p-3 font-medium text-content-primary">{o.origin}</td>
                     <td className="p-3 font-sans capitalize text-content-secondary">{o.sourceKind.replace(/_/g, " ")}</td>
                     <td className="p-3 text-content-muted text-[11px]">
-                      {o.resourceType || o.sourceLocator || "—"}
+                      {o.resourceType || o.sourceLocator || "None"}
                     </td>
                     <td className="p-3 font-sans">
                       {o.confirmedByOwnerAt ? (

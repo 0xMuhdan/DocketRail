@@ -4,9 +4,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "DocketRail — MiniPay Review Dossier & Audit Console",
+  title: "DocketRail: MiniPay Review Dossier & Audit Console",
   description:
-    "Turn your MiniPay app into a verified submission pack with traceable evidence and a clear list of what is missing.",
+    "Autonomous compliance auditing for MiniPay directory submissions. Generates verifiable evidence dossiers, origin inventories, and missing-item lists.",
   icons: {
     icon: "/logo-icon-dark.png",
     shortcut: "/logo-icon-dark.png",
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-base-950 text-base-100 flex flex-col min-h-screen selection:bg-brand selection:text-white">
+      <body className="bg-canvas text-content-primary flex flex-col min-h-screen selection:bg-lime selection:text-canvas-deep">
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

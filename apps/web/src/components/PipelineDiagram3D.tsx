@@ -267,7 +267,7 @@ export function PipelineDiagram3D() {
             </div>
             <h4 className="text-base sm:text-lg font-bold text-content-primary tracking-tight flex items-center gap-2">
               <ActiveIcon className="w-4 h-4 text-lime shrink-0" />
-              <span>{active.title} — {active.subtitle}</span>
+              <span>{active.title}: {active.subtitle}</span>
             </h4>
           </div>
 
