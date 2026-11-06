@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { PairingApproveInputSchema } from "@docketrail/contracts";
+import { approvePairingByUserCode } from "@/lib/pairings-store";
 
 export async function POST(req: Request) {
   try {
@@ -13,11 +14,18 @@ export async function POST(req: Request) {
       );
     }
 
-    // In a live Supabase environment:
-    // Update public.runner_pairings set approved_owner_id = auth.uid() where user_code_hash = sha256(userCode)
+    const pairing = approvePairingByUserCode(parsed.data.userCode);
+
+    if (!pairing) {
+      return NextResponse.json(
+        { code: "PAIRING_NOT_FOUND", message: "Invalid or expired verification code." },
+        { status: 404 }
+      );
+    }
+
     return NextResponse.json({
       approved: true,
-      userCode: parsed.data.userCode,
+      userCode: pairing.userCode,
       approvedAt: new Date().toISOString(),
     });
   } catch (err: unknown) {

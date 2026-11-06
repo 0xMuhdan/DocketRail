@@ -17,7 +17,7 @@ export const PairingInitResponseSchema = z.object({
 export type PairingInitResponse = z.infer<typeof PairingInitResponseSchema>;
 
 export const PairingApproveInputSchema = z.object({
-  userCode: z.string().length(8),
+  userCode: z.string().min(8).max(12),
 });
 export type PairingApproveInput = z.infer<typeof PairingApproveInputSchema>;
 

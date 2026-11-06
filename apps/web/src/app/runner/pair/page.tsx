@@ -94,7 +94,7 @@ export default function RunnerPairPage() {
           <input
             type="text"
             required
-            maxLength={8}
+            maxLength={12}
             value={userCode}
             onChange={(e) => setUserCode(e.target.value.toUpperCase())}
             placeholder="ABCD-1234"
@@ -104,7 +104,7 @@ export default function RunnerPairPage() {
 
         <button
           type="submit"
-          disabled={submitting || userCode.length < 8}
+          disabled={submitting || userCode.trim().length < 8}
           className="w-full py-2.5 rounded-md font-semibold text-xs bg-lime text-canvas-deep hover:bg-lime-light transition-colors shadow-sm disabled:opacity-50"
         >
           {submitting ? "Verifying..." : "Authorize Runner"}
