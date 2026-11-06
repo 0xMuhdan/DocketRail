@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "prebuild": "pnpm --filter @docketrail/contracts run build && pnpm --filter @docketrail/reporting run build",
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
